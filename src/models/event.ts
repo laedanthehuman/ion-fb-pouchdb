@@ -1,0 +1,20 @@
+export interface Event {
+  eventId: number,
+  ambientId: number,
+  segmentId: number,
+  ativityId: number,
+  title: string,
+  beginDateTime: string,
+  endDateTime: string,
+  activityTypeId: number,
+  status: number,
+  createdAt: string,
+  modifiedAt: string,
+  titleEn: string,
+  titleES: string,
+  area: string,
+  areaEn: string,
+  areaEs: string,
+  local: string,
+  activityType: string
+}
