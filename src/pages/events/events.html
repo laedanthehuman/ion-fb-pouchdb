@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <p *ngIf="userReady"> Olá {{user.name}} veja seus </p>
+      Eventos
+    </ion-title>
+
+    <ion-buttons end>
+      <button (click)="doFbLogout()" ion-button clear item-left>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment >
+       <ion-segment-button value="{{day}}" (tap)="dayChange(day)" *ngFor="let day of days" >
+        {{day}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+   <pre>
+    {{daySet}}
+  </pre>
+  <div [ngSwitch]="daySet">
+    <div  *ngFor="let day of days" >
+      <ion-list *ngSwitchCase="day">
+        <ion-card *ngFor="let event of showingEvents">
+          <ion-card-content >
+            <h6>{{event.titulo}}</h6>
+            <p>
+              <ion-icon name="clock"></ion-icon> De {{event.data_hora_inicio }} ás {{event.data_hora_termino }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </div>
+  </div>
+<!--
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>
